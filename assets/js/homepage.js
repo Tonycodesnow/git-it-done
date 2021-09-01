@@ -2,6 +2,9 @@
 var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#username");
 
+var repoContainerEl = document.querySelector("#repos-contianer");
+var repoSearchTerm = document.querySelector("repo-search-term");
+
 var getUserRepos = function(user) {
   // format the github api url
   var apiUrl = "https://api.github.com/users/" + user + "/repos";
@@ -10,7 +13,7 @@ var getUserRepos = function(user) {
   fetch(apiUrl).then(function(response) {
         
     response.json().then(function(data) {
-        console.log(data);
+        displayRepos(data, user);
     });
   });
 }
@@ -31,6 +34,11 @@ var formSubmitHandler = function(event) {
     alert("Please enter a gitHub username");
   }
     
+};
+
+var displayRepos = function(repos, searchTerm) {
+  console.log(repos);
+  console.log(searchTerm);
 };
 
 userFormEl.addEventListener("submit", formSubmitHandler);
