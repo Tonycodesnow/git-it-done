@@ -33,12 +33,30 @@ var formSubmitHandler = function(event) {
   } else {
     alert("Please enter a gitHub username");
   }
-    
 };
 
 var displayRepos = function(repos, searchTerm) {
-  console.log(repos);
-  console.log(searchTerm);
+  repoContainerEl.textContent = "";
+  repoSearchTerm.textContent = searchTerm;
+  for (var i = 0; i <repos.length; i++) {
+    // format repo name 
+    var repoName = repos[i].owner.login + "/" + repos[i].name;
+
+    // create a contianer foe each repo
+    var repoEl = document. createElement("div");
+    repoEl.classList = "list-item flex-row justify-space-between align-center";
+
+    // create a span element to hold repository name
+    var title = document.createElement("span");
+    title.textContent = repoName;
+
+    // append to contianer
+    repoEl.appendChild(titleEl);
+
+    // append container to the dom
+    repoContainerEl.appendChild(repoEl);
+
+  }
 };
 
 userFormEl.addEventListener("submit", formSubmitHandler);
