@@ -87,11 +87,14 @@ var displayRepos = function (repos, searchTerm) {
 
     }
 
+    // append to  container 
     repoEl.appendChild(statusEl);
+
     // append container to the dom
     repoContainerEl.appendChild(repoEl);
 
   }
 };
 
+// add event listeners to forms
 userFormEl.addEventListener("submit", formSubmitHandler);
